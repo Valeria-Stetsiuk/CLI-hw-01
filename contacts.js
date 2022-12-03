@@ -15,7 +15,7 @@ async function getContactById(contactId) {
     (element) => element.id === contactId
   );
 
-  return contact || "null";
+  return contact || "Not Found. Try again";
 }
 
 async function removeContact(contactId) {
@@ -23,7 +23,7 @@ async function removeContact(contactId) {
   const listOfContacts = JSON.parse(contacts);
   const index = listOfContacts.findIndex((el) => el.id === contactId);
   if (index === -1) {
-    return null;
+    return "Not Found";
   }
   const [contact] = listOfContacts.splice(index, 1);
   await fs.writeFile(contactsPath, JSON.stringify(listOfContacts, null, 2));
