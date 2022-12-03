@@ -1,5 +1,6 @@
 const fs = require("fs/promises");
 const path = require("path");
+const { nanoid } = require("nanoid");
 
 const contactsPath = path.join(__dirname, "db", "contacts.json");
 
@@ -14,7 +15,7 @@ async function getContactById(contactId) {
     (element) => element.id === contactId
   );
 
-  return contact || null;
+  return contact || "null";
 }
 
 async function removeContact(contactId) {
